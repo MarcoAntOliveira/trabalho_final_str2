@@ -245,8 +245,7 @@ void TaskExecucaoMotorZ(void *pvParameters) {
 
 void setup() {
   Serial.begin(115200); 
-  disableCore0WDT();
-   motorX.setMaxSpeed(600);
+  motorX.setMaxSpeed(600);
   motorY.setMaxSpeed(600);
   motorZ.setMaxSpeed(600);
   
