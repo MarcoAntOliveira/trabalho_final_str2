@@ -62,7 +62,7 @@ Olá! Com base no código FreeRTOS e AccelStepper fornecido, atualizei o `README
 
 O sistema é dividido em quatro _tasks_ principais, que se comunicam e se sincronizam usando **Filas (`Queue`)** e **Semáforos (`Semaphore`)** do FreeRTOS.
 
-### 🧵 Sincronização e Comunicação
+###  Sincronização e Comunicação
 
 A execução da trajetória é estritamente **sequencializada (encadeada)** por Semáforos Binários, garantindo a conclusão de um passo antes de iniciar o próximo:
 
@@ -76,7 +76,7 @@ A execução da trajetória é estritamente **sequencializada (encadeada)** por 
     5.  `TaskExecucaoMotorZ` libera `xSemaphoreZDone`.
     6.  `TaskControleMovimento` espera por `xSemaphoreZDone` para enviar o próximo ponto.
 
-### ⚙️ Tasks Implementadas
+###  Tasks Implementadas
 
 | Task | Prioridade (Core 0) | Função | Sincronização Envolvida |
 | :--- | :--- | :--- | :--- |
@@ -86,7 +86,7 @@ A execução da trajetória é estritamente **sequencializada (encadeada)** por 
 | **`TaskExecucaoMotorY`** | `1` | Recebe destino Y da fila, espera a conclusão de X, executa o movimento Y. | Espera por `xSemaphoreXDone`. Libera `xSemaphoreYDone`. |
 | **`TaskExecucaoMotorZ`** | `1` | Espera a conclusão de Y, executa um movimento fixo no eixo Z (como um ciclo de atuação). | Espera por `xSemaphoreYDone`. Libera `xSemaphoreZDone`. |
 
-### 🧭 Trajetória Circular (XY)
+### Trajetória Circular (XY)
 
 A trajetória é pré-calculada em um array de pontos (`circulo[]`) na função `calcularCircunferencia()`.
 
@@ -99,7 +99,7 @@ A `TaskControleMovimento` itera sobre este vetor, enviando as coordenadas para a
 
 ---
 
-## 📝 Detalhes da Execução
+##  Detalhes da Execução
 
 ### **Task Homing**
 
