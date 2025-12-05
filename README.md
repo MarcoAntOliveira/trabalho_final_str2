@@ -38,7 +38,7 @@ Para a correta sincronização e proteção, foram implementados os seguintes me
 * **Homing (Calibração):** Processo de busca dos limites de cada eixo (usando os _limit switches_) para estabelecer o ponto de origem $(0, 0, 0)$ e mapear a extensão máxima de movimento de cada eixo em passos.
 * **Trajetória Circular:** Implementada através do cálculo de um vetor de pontos. Uma _task_ dedicada coordena o movimento síncrono dos motores X e Y, esperando que **ambos os semáforos** estejam livres antes de enviar as ordens de movimento para o próximo ponto.
 * **Inclusão do Eixo Z:** O terceiro eixo foi integrado no processo de _Homing_ e está disponível para comandos de movimento genéricos, apesar de problemas de hardware (fins de curso defeituosos, emperramento e pontos de singularidade mecânica).
-* **Interface de Usuário e Parada de Emergência (Opcional):** Implementação de um botão de emergência via **interrupção de hardware**. Ao ser ativado, a interrupção aborta o código de forma controlada através do disparo do _Watchdog Timer_ do FreeRTOS, prevenindo danos.
+**interrupção de hardware**. Ao ser ativado, a interrupção aborta o código de forma controlada através do disparo do _Watchdog Timer_ do FreeRTOS, prevenindo danos.
 Olá! Com base no código FreeRTOS e AccelStepper fornecido, atualizei o `README.md` para refletir a arquitetura de sincronização específica implementada (uso de **Filas** e **Semáforos** para encadeamento da trajetória).
 
 
